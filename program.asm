@@ -23,5 +23,5 @@ Disassembly of section .text:
       56:	18 01 00 00 01 02 00 00 00 00 00 00 00 00 00 00	r1 = 0x201 ll ; load the not haha message ;(
       58:	b7 02 00 00 22 00 00 00	r2 = 0x22
       59:	85 10 00 00 ff ff ff ff	call -0x1 ; call the logging function?
-      60:	b7 00 00 00 00 00 00 00	r0 = 0x0
+      60:	b7 00 00 00 00 00 00 00	r0 = 0x0 ; result registry set to 0 (all OK 👍)
       61:	95 00 00 00 00 00 00 00	exit
