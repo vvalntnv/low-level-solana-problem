@@ -8,7 +8,7 @@ Disassembly of section .text:
       38:	79 12 00 00 00 00 00 00	r2 = *(u64 *)(r1 + 0x0) ; read the first 8 bytes (len of accounts)
       39:	55 02 15 00 00 00 00 00	if r2 != 0x0 goto +0x15 <entrypoint+0xc8> ; assert the len of the accounts is 0 (no accounts required in this instruction) / otherwise, exit
       40:	79 12 08 00 00 00 00 00	r2 = *(u64 *)(r1 + 0x8) ; load the length of the instruction data in the second registry;
-      41:	55 02 0e 00 10 00 00 00	if r2 != 0x10 goto +0xe <entrypoint+0xa0> ; the size of the data should be 16 bytes (i.e. that means two u64 numbers) / otherwise, not-haha
+      41:	55 02 0e 00 10 00 00 00	if r2 != 0x10 goto +0xe <entrypoint+0xa0> ; the size of the data should be 16 bytes (i.e. that means two 64 bit numbers) / otherwise, not-haha
       42:	79 12 10 00 00 00 00 00	r2 = *(u64 *)(r1 + 0x10) ; load the first number into the r2 registry
       43:	18 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff	r3 = -0x10000000000 ll ; load this number into r3
       45:	5f 32 00 00 00 00 00 00	r2 &= r ; remove the last 40 bits of the number /using the number above/ (optimization ig?)
