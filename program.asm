@@ -13,7 +13,7 @@ Disassembly of section .text:
       43:	18 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff	r3 = -0x10000000000 ll ; load this number into r3
       45:	5f 32 00 00 00 00 00 00	r2 &= r ; remove the last 40 bits of the number /using the number above/ (optimization ig?)
       46:	18 03 00 00 00 00 00 00 00 00 00 00 00 9b 6a d6	r3 = -0x2995650000000000 ll ; very specific number being loaded into r3 right here
-      48:	af 32 00 00 00 00 00 00	r2 ^= r3 ; XOR the number in r2 and r3 and keep the result into r2
+      48:	af 32 00 00 00 00 00 00	r2 ^= r3 ; XOR the number in r2 and r3 and keep the result into r2 ( essentially, here we ensure that the first 24 bits of the number in the r2 equal our magic number)
       49:	79 11 18 00 00 00 00 00	r1 = *(u64 *)(r1 + 0x18) ; read the second number from the r1 registry and keep it there (r1 becomes just the number)
       50:	4f 12 00 00 00 00 00 00	r2 |= r1 ; OR r2 and r1
       51:	55 02 04 00 00 00 00 00	if r2 != 0x0 goto +0x4 <entrypoint+0xa0> ; assert, after all this operations, that the value of r2 is zero / otherwise not haha
