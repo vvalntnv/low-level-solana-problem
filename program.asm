@@ -15,7 +15,7 @@ Disassembly of section .text:
       46:	18 03 00 00 00 00 00 00 00 00 00 00 00 9b 6a d6	r3 = -0x2995650000000000 ll ; very specific number being loaded into r3 right here
       48:	af 32 00 00 00 00 00 00	r2 ^= r3 ; XOR the number in r2 and r3 and keep the result into r2 ( essentially, here we ensure that the first 24 bits of the number in the r2 equal our magic number)
       49:	79 11 18 00 00 00 00 00	r1 = *(u64 *)(r1 + 0x18) ; read the second number from the r1 registry and keep it there (r1 becomes just the number)
-      50:	4f 12 00 00 00 00 00 00	r2 |= r1 ; OR r2 and r1
+      50:	4f 12 00 00 00 00 00 00	r2 |= r1 ; OR r2 and r1 (only way for this to produce 0 is for the number in r1 to be equal to 0)
       51:	55 02 04 00 00 00 00 00	if r2 != 0x0 goto +0x4 <entrypoint+0xa0> ; assert, after all this operations, that the value of r2 is zero / otherwise not haha
       52:	18 01 00 00 f0 01 00 00 00 00 00 00 00 00 00 00	r1 = 0x1f0 ll ; load the HAHA message probably
       54:	b7 02 00 00 11 00 00 00	r2 = 0x11
