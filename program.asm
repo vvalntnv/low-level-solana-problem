@@ -11,7 +11,7 @@ Disassembly of section .text:
       41:	55 02 0e 00 10 00 00 00	if r2 != 0x10 goto +0xe <entrypoint+0xa0> ; the size of the data should be 16 bytes (i.e. that means two 64 bit numbers) / otherwise, not-haha
       42:	79 12 10 00 00 00 00 00	r2 = *(u64 *)(r1 + 0x10) ; load the first number into the r2 registry
       43:	18 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff	r3 = -0x10000000000 ll ; load this number into r3
-      45:	5f 32 00 00 00 00 00 00	r2 &= r ; remove the last 40 bits of the number /using the number above/ (optimization ig?)
+      45:	5f 32 00 00 00 00 00 00	r2 &= r3 ; remove the last 40 bits of the number /using the number above/ (optimization ig?)
       46:	18 03 00 00 00 00 00 00 00 00 00 00 00 9b 6a d6	r3 = -0x2995650000000000 ll ; very specific number being loaded into r3 right here
       48:	af 32 00 00 00 00 00 00	r2 ^= r3 ; XOR the number in r2 and r3 and keep the result into r2 ( essentially, here we ensure that the first 24 bits of the number in the r2 equal our magic number)
       49:	79 11 18 00 00 00 00 00	r1 = *(u64 *)(r1 + 0x18) ; read the second number from the r1 registry and keep it there (r1 becomes just the number)
